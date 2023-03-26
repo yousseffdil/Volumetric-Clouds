@@ -1,19 +1,19 @@
 bl_info = {
-    "name": "Crear Nubes",
+    "name": "Create clouds",
     "author": "icantuga",
     "version": (1, 0),
     "blender": (3, 0, 0),
     "location": "View3D > Add > Mesh > Nubes",
-    "description": "Este plugin crea una malla de nubes",
+    "description": "This pluguin create a volumetric cloud",
     "category": "Add Mesh",
 }
 
 import bpy
 
-class CrearNubes(bpy.types.Operator):
-    """Crear Nubes"""
-    bl_idname = "mesh.crear_nubes"
-    bl_label = "Crear Nubes"
+class CreateClouds(bpy.types.Operator):
+    """Create clouds"""
+    bl_idname = "mesh.create_clouds"
+    bl_label = "Create Clouds"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -41,14 +41,14 @@ class CrearNubes(bpy.types.Operator):
         return {'FINISHED'}
 
 def menu_func(self, context):
-    self.layout.operator(CrearNubes.bl_idname, icon='MESH_UVSPHERE')
+    self.layout.operator(CreateClouds.bl_idname, icon='MESH_UVSPHERE')
 
 def register():
-    bpy.utils.register_class(CrearNubes)
+    bpy.utils.register_class(CreateClouds)
     bpy.types.VIEW3D_MT_mesh_add.append(menu_func)
 
 def unregister():
-    bpy.utils.unregister_class(CrearNubes)
+    bpy.utils.unregister_class(CreateClouds)
     bpy.types.VIEW3D_MT_mesh_add.remove(menu_func)
 
 if __name__ == "__main__":
